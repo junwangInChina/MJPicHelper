@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5792F4481F5EB76ED1A5FFEE /* Pods_MJPicHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A5B09CFFFEB868FDA4D714 /* Pods_MJPicHelper.framework */; };
 		DA694AAF235D4758002BFB38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA694AAE235D4758002BFB38 /* AppDelegate.m */; };
 		DA694AB2235D4758002BFB38 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA694AB1235D4758002BFB38 /* ViewController.m */; };
 		DA694AB5235D4758002BFB38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA694AB3235D4758002BFB38 /* Main.storyboard */; };
@@ -14,6 +15,8 @@
 		DA694ABA235D475A002BFB38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA694AB8235D475A002BFB38 /* LaunchScreen.storyboard */; };
 		DA694ABD235D475A002BFB38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA694ABC235D475A002BFB38 /* main.m */; };
 		DA694AC6235D47F6002BFB38 /* MJPicHelperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA694AC5235D47F6002BFB38 /* MJPicHelperManager.m */; };
+		DA694ACC235D55E8002BFB38 /* MJPicSFController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA694ACB235D55E8002BFB38 /* MJPicSFController.m */; };
+		DA694ACF235D59A6002BFB38 /* MJPicWKController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA694ACE235D59A6002BFB38 /* MJPicWKController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,13 @@
 		DA694ABC235D475A002BFB38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DA694AC4235D47F6002BFB38 /* MJPicHelperManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPicHelperManager.h; sourceTree = "<group>"; };
 		DA694AC5235D47F6002BFB38 /* MJPicHelperManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPicHelperManager.m; sourceTree = "<group>"; };
+		DA694ACA235D55E8002BFB38 /* MJPicSFController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPicSFController.h; sourceTree = "<group>"; };
+		DA694ACB235D55E8002BFB38 /* MJPicSFController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPicSFController.m; sourceTree = "<group>"; };
+		DA694ACD235D59A6002BFB38 /* MJPicWKController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPicWKController.h; sourceTree = "<group>"; };
+		DA694ACE235D59A6002BFB38 /* MJPicWKController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPicWKController.m; sourceTree = "<group>"; };
+		DF07F805C9D2455D02D6AF89 /* Pods-MJPicHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MJPicHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-MJPicHelper/Pods-MJPicHelper.release.xcconfig"; sourceTree = "<group>"; };
+		E8A5B09CFFFEB868FDA4D714 /* Pods_MJPicHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MJPicHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA211458C0A7DF45C5EADED /* Pods-MJPicHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MJPicHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MJPicHelper/Pods-MJPicHelper.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +46,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5792F4481F5EB76ED1A5FFEE /* Pods_MJPicHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DFCCC02394F6ED77EF6AAB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8A5B09CFFFEB868FDA4D714 /* Pods_MJPicHelper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BFB43F3CBE769FBA899AAF05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FCA211458C0A7DF45C5EADED /* Pods-MJPicHelper.debug.xcconfig */,
+				DF07F805C9D2455D02D6AF89 /* Pods-MJPicHelper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DA694AA1235D4758002BFB38 = {
 			isa = PBXGroup;
 			children = (
 				DA694AAC235D4758002BFB38 /* MJPicHelper */,
 				DA694AAB235D4758002BFB38 /* Products */,
+				BFB43F3CBE769FBA899AAF05 /* Pods */,
+				2DFCCC02394F6ED77EF6AAB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +110,10 @@
 			children = (
 				DA694AC4235D47F6002BFB38 /* MJPicHelperManager.h */,
 				DA694AC5235D47F6002BFB38 /* MJPicHelperManager.m */,
+				DA694ACA235D55E8002BFB38 /* MJPicSFController.h */,
+				DA694ACB235D55E8002BFB38 /* MJPicSFController.m */,
+				DA694ACD235D59A6002BFB38 /* MJPicWKController.h */,
+				DA694ACE235D59A6002BFB38 /* MJPicWKController.m */,
 			);
 			path = MJPicHelper;
 			sourceTree = "<group>";
@@ -91,9 +125,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA694AC0235D475A002BFB38 /* Build configuration list for PBXNativeTarget "MJPicHelper" */;
 			buildPhases = (
+				7791D170EF27B19AE1BBCFE8 /* [CP] Check Pods Manifest.lock */,
 				DA694AA6235D4758002BFB38 /* Sources */,
 				DA694AA7235D4758002BFB38 /* Frameworks */,
 				DA694AA8235D4758002BFB38 /* Resources */,
+				44C42140B65CEB2A7EE81DAA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +185,51 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		44C42140B65CEB2A7EE81DAA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MJPicHelper/Pods-MJPicHelper-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MJPicHelper/Pods-MJPicHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7791D170EF27B19AE1BBCFE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MJPicHelper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DA694AA6235D4758002BFB38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -156,8 +237,10 @@
 			files = (
 				DA694AB2235D4758002BFB38 /* ViewController.m in Sources */,
 				DA694AC6235D47F6002BFB38 /* MJPicHelperManager.m in Sources */,
+				DA694ACC235D55E8002BFB38 /* MJPicSFController.m in Sources */,
 				DA694ABD235D475A002BFB38 /* main.m in Sources */,
 				DA694AAF235D4758002BFB38 /* AppDelegate.m in Sources */,
+				DA694ACF235D59A6002BFB38 /* MJPicWKController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +380,7 @@
 		};
 		DA694AC1235D475A002BFB38 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCA211458C0A7DF45C5EADED /* Pods-MJPicHelper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -313,6 +397,7 @@
 		};
 		DA694AC2235D475A002BFB38 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF07F805C9D2455D02D6AF89 /* Pods-MJPicHelper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
