@@ -1,2 +1,2 @@
-# MJDBHelper
+# MJPicHelper
 mj helper
