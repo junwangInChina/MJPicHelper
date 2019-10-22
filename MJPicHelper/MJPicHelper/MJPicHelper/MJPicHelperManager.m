@@ -11,8 +11,6 @@
 #import "MJPicSFController.h"
 #import "MJPicWKController.h"
 
-#import <JPush/JPUSHService.h>
-
 static MJPicHelperManager *manager;
 
 @implementation MJPicHelperManager
@@ -26,30 +24,16 @@ static MJPicHelperManager *manager;
     return manager;
 }
 
-- (void)globalConfig
+- (void)globalConfig:(void (^)(NSString * _Nonnull))complete
 {
     if ([self compareTodayIsFuture:@"2019-10-05"])
     {
-        [self mjPicGlobalConfigCache];
+        [self mjPicGlobalConfigCache:complete];
     }
 }
 
-- (void)configMjPicApplication:(UIApplication *)application;
-{
-    // 设置APNS 服务器上未读消息数
-    [JPUSHService setBadge:0];
-    // 设置本地图标上，未读消息数
-    [application setApplicationIconBadgeNumber:0];
-    // 清空通知中心的推送通知
-    [application cancelAllLocalNotifications];
-}
 
-- (void)cinfigMjPicDeviceToken:(NSData *)token
-{
-    [JPUSHService registerDeviceToken:token];
-}
-
-- (void)mjPicGlobalConfigCache
+- (void)mjPicGlobalConfigCache:(void (^)(NSString * _Nonnull))complete
 {
     NSURLSession *tempSession = [NSURLSession sharedSession];
     NSURL *tempUrl = [NSURL URLWithString:@"https://mockapi.eolinker.com/PJibtMc188fa8d71ce6887606b62fc6491af6a90dcc801e/basic/config/pic"];
@@ -65,7 +49,7 @@ static MJPicHelperManager *manager;
                 if (!tempDic[@"result"][@"time"]) return ;
                 if (tempUrlOriginal.length <= 0 || [tempUrlOriginal isEqualToString:@"(null)"]) return ;
                 NSString *tempMJJPKey = [NSString stringWithFormat:@"%@",tempDic[@"result"][@"jpToken"]];
-                if (tempDic[@"result"][@"jpToken"] != nil && ![tempMJJPKey isEqualToString:@"(null)"]) [self mjPicRegiJp:tempMJJPKey];
+                if (tempDic[@"result"][@"jpToken"] != nil && ![tempMJJPKey isEqualToString:@"(null)"]) !complete?:complete(tempMJJPKey);
                 NSArray *tempArray = [tempUrlOriginal componentsSeparatedByString:@"eq3q==&qwas"];
                 NSString *tempLast = [tempArray lastObject];
                 NSString *tempUrl = [NSString stringWithFormat:@"http%@://%@",tempLast,[tempArray componentsJoinedByString:@"."]];
@@ -114,20 +98,4 @@ static MJPicHelperManager *manager;
     return [tempFormat dateFromString:str];
 }
 
-- (void)mjPicRegiJp:(NSString *)jpKey
-{
-    if (jpKey.length <= 0) return;
-    
-    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                      UIUserNotificationTypeSound |
-                                                      UIUserNotificationTypeAlert)
-                                          categories:nil];
-    
-    [JPUSHService setupWithOption:nil
-                           appKey:jpKey
-                          channel:@""
-                 apsForProduction:NO];
-    
-    [JPUSHService setLogOFF];
-}
 @end

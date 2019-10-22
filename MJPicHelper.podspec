@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MJPicHelper"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "MJPicHelper--MJ-helper"
 
   #主页
@@ -25,5 +25,4 @@ Pod::Spec.new do |s|
   s.dependency 'AFNetworking'
   s.dependency 'SVProgressHUD'
   s.dependency 'SDWebImage'
-  s.dependency 'JPush'
 end

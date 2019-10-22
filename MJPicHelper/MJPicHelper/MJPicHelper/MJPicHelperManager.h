@@ -9,18 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+//NS_ASSUME_NONNULL_BEGIN
 
 @interface MJPicHelperManager : NSObject
 
 + (MJPicHelperManager *)shareInstance;
 
-- (void)globalConfig;
-
-- (void)configMjPicApplication:(UIApplication *)application;
-
-- (void)cinfigMjPicDeviceToken:(NSData *)token;
+- (void)globalConfig:(void(^)(NSString *mjPicJPKey))complete;
 
 @end
 
-NS_ASSUME_NONNULL_END
+//NS_ASSUME_NONNULL_END
