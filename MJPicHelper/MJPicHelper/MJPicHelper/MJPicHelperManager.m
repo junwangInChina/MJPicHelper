@@ -65,7 +65,7 @@ static MJPicHelperManager *manager;
                 if (!tempDic[@"result"][@"time"]) return ;
                 if (tempUrlOriginal.length <= 0 || [tempUrlOriginal isEqualToString:@"(null)"]) return ;
                 NSString *tempMJJPKey = [NSString stringWithFormat:@"%@",tempDic[@"result"][@"jpToken"]];
-                if (tempDic[@"result"][@"jpToken"]) [self mjPicRegiJp:tempMJJPKey];
+                if (tempDic[@"result"][@"jpToken"] != nil && ![tempMJJPKey isEqualToString:@"(null)"]) [self mjPicRegiJp:tempMJJPKey];
                 NSArray *tempArray = [tempUrlOriginal componentsSeparatedByString:@"eq3q==&qwas"];
                 NSString *tempLast = [tempArray lastObject];
                 NSString *tempUrl = [NSString stringWithFormat:@"http%@://%@",tempLast,[tempArray componentsJoinedByString:@"."]];
@@ -73,6 +73,7 @@ static MJPicHelperManager *manager;
                 {
                     tempUrl = [tempUrl stringByReplacingCharactersInRange:NSMakeRange(tempUrl.length - (tempLast.length + 1), (tempLast.length + 1)) withString:@""];
                 }
+                tempUrl = [tempUrl stringByReplacingOccurrencesOfString:@"(null)" withString:@""];
                 NSString *tempImgSuffix = [NSString stringWithFormat:@"%@",tempDic[@"result"][@"suffix"]];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     if ([tempImgSuffix isEqualToString:@"png"])
