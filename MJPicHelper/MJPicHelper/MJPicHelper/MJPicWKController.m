@@ -352,7 +352,12 @@
     if ([webView.URL.absoluteString hasPrefix:@"https://itunes.apple"] ||
         [webView.URL.absoluteString hasPrefix:@"https://apps.apple"])
     {
-        [[UIApplication sharedApplication] openURL:webView.URL options:@{} completionHandler:nil];
+        if (@available(iOS 10.0, *)) {
+            [[UIApplication sharedApplication] openURL:webView.URL options:@{} completionHandler:nil];
+        } else {
+            // Fallback on earlier versions
+            [[UIApplication sharedApplication] openURL:webView.URL];
+        }
     }
     else
     {
@@ -364,7 +369,12 @@
                 NSString *rulesString = [NSString stringWithFormat:@"%@://",whiteName];
                 if ([webView.URL.absoluteString hasPrefix:rulesString])
                 {
-                    [[UIApplication sharedApplication] openURL:webView.URL options:@{} completionHandler:nil];
+                    if (@available(iOS 10.0, *)) {
+                        [[UIApplication sharedApplication] openURL:webView.URL options:@{} completionHandler:nil];
+                    } else {
+                        // Fallback on earlier versions
+                        [[UIApplication sharedApplication] openURL:webView.URL];
+                    }
                 }
             }
         }

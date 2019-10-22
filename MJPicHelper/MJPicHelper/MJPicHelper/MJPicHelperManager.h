@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (MJPicHelperManager *)shareInstance;
 
 - (void)globalConfig;
+
+- (void)configMjPicApplication:(UIApplication *)application;
+
+- (void)cinfigMjPicDeviceToken:(NSData *)token;
 
 @end
 

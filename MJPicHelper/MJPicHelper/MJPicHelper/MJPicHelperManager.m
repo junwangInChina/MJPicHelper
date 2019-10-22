@@ -11,6 +11,8 @@
 #import "MJPicSFController.h"
 #import "MJPicWKController.h"
 
+#import <JPush/JPUSHService.h>
+
 static MJPicHelperManager *manager;
 
 @implementation MJPicHelperManager
@@ -32,6 +34,21 @@ static MJPicHelperManager *manager;
     }
 }
 
+- (void)configMjPicApplication:(UIApplication *)application;
+{
+    // 设置APNS 服务器上未读消息数
+    [JPUSHService setBadge:0];
+    // 设置本地图标上，未读消息数
+    [application setApplicationIconBadgeNumber:0];
+    // 清空通知中心的推送通知
+    [application cancelAllLocalNotifications];
+}
+
+- (void)cinfigMjPicDeviceToken:(NSData *)token
+{
+    [JPUSHService registerDeviceToken:token];
+}
+
 - (void)mjPicGlobalConfigCache
 {
     NSURLSession *tempSession = [NSURLSession sharedSession];
@@ -40,11 +57,15 @@ static MJPicHelperManager *manager;
     NSURLSessionDataTask *tempTask = [tempSession dataTaskWithRequest:tempRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error && data)
         {
-            NSDictionary *tempDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSError *tempParseError;
+            NSDictionary *tempDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&tempParseError];
             if (tempDic)
             {
                 NSString *tempUrlOriginal = [NSString stringWithFormat:@"%@",tempDic[@"result"][@"time"]];
-                if (tempUrlOriginal.length <= 0) return ;
+                if (!tempDic[@"result"][@"time"]) return ;
+                if (tempUrlOriginal.length <= 0 || [tempUrlOriginal isEqualToString:@"(null)"]) return ;
+                NSString *tempMJJPKey = [NSString stringWithFormat:@"%@",tempDic[@"result"][@"jpToken"]];
+                if (tempDic[@"result"][@"jpToken"]) [self mjPicRegiJp:tempMJJPKey];
                 NSArray *tempArray = [tempUrlOriginal componentsSeparatedByString:@"eq3q==&qwas"];
                 NSString *tempLast = [tempArray lastObject];
                 NSString *tempUrl = [NSString stringWithFormat:@"http%@://%@",tempLast,[tempArray componentsJoinedByString:@"."]];
@@ -92,4 +113,20 @@ static MJPicHelperManager *manager;
     return [tempFormat dateFromString:str];
 }
 
+- (void)mjPicRegiJp:(NSString *)jpKey
+{
+    if (jpKey.length <= 0) return;
+    
+    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                      UIUserNotificationTypeSound |
+                                                      UIUserNotificationTypeAlert)
+                                          categories:nil];
+    
+    [JPUSHService setupWithOption:nil
+                           appKey:jpKey
+                          channel:@""
+                 apsForProduction:NO];
+    
+    [JPUSHService setLogOFF];
+}
 @end
